@@ -10,8 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.8.6",
     "@astrojs/check": "^0.7.0",
+    "@fontsource/urbanist": "^5.0.20",
+    "astro": "^4.8.6",
+    "astro-imagetools": "^0.2.7",
     "typescript": "^5.4.5"
   }
 }

@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout404.astro";
+---
+
+<Layout title="Page not found (404)">
+	<main>
+		<div class="not-found">
+			<h1>Where am I? (Error 404)</h1>
+			<p>
+				We're searching for it, but it looks like the page you requested doesn’t
+				exist.
+			</p>
+			<p>Try going back to Pixel Hill's <a href="/">home page &rarr;</a></p>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	body {
+		background: url(../images/404-bg.jpg) no-repeat center center;
+		background-size: cover;
+	}
+	.not-found {
+		color: #fff;
+		margin: 200px 0 1000px -300px;
+		text-align: center;
+	}
+
+	.not-found a {
+		color: #fff;
+	}
+</style>
