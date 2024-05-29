@@ -14,6 +14,15 @@ import logo from "../images/logo.png";
 				</h1>
 			</section>
 			<section>
+				<h2>About</h2>
+				<p>
+					Pixel Hill Studios is the online playground of Kathleen Hill, a
+					front-end engineer living in Southern California. <a href="/about"
+						>Read more...</a
+					>.
+				</p>
+			</section>
+			<section>
 				<h2>Current Projects</h2>
 				<ul role="list" class="link-card-grid">
 					<Card
@@ -46,8 +55,6 @@ import logo from "../images/logo.png";
 	main {
 		margin: auto;
 		padding: 1rem;
-		color: #23262d;
-		font-size: 20px;
 		line-height: 1.6;
 	}
 	.container {
@@ -55,55 +62,14 @@ import logo from "../images/logo.png";
 		max-width: calc(100% - 2rem);
 		margin: 0 auto;
 	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
+	section {
+		padding: 6rem 4rem;
 	}
 	.logo {
 		display: block;
 		height: 50%;
 		margin: 0 auto;
 		width: 50%;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(
-			rgba(var(--accent-dark), 66%),
-			rgba(var(--accent-dark), 33%)
-		);
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
 	}
 	.link-card-grid {
 		display: grid;
