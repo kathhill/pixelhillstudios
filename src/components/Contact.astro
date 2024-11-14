@@ -1,0 +1,61 @@
+<label for="name">Name:</label>
+<input
+	name="name"
+	id="name"
+	type="text"
+	placeholder="First, last, and/or company name"
+/>
+
+<label for="email">Email:</label>
+<input name="email" id="email" placeholder="name@website.com" type="email" />
+
+<label for="message">Message:</label>
+<textarea id="body" placeholder="How may I help you?"></textarea>
+
+<input name="submit" id="submit" type="submit" value="Send" />
+
+<style lang="scss">
+	label {
+		color: var(--color-text-reverse);
+		display: block;
+		font-weight: 700;
+		padding: 0;
+	}
+	input,
+	textarea {
+		background: transparent;
+		border: 1px solid #fff;
+		border-radius: 6px;
+		box-sizing: border-box;
+		box-shadow: 0 0 10px #444;
+		font-size: 1rem;
+		width: 100%;
+
+		&::placeholder {
+			color: #e8e8e8;
+			font-size: 1rem;
+		}
+
+		&:focus {
+			background: #e8e8e8;
+			color: var(--color-darkest-green);
+			font-weight: 700;
+		}
+	}
+	input {
+		padding: 20px;
+		margin-bottom: 1rem;
+
+		&[type="submit"] {
+			background: #025306;
+			color: #fff;
+			cursor: pointer;
+			font-size: 1.5rem;
+			margin: 2rem auto;
+		}
+	}
+	textarea {
+		height: 150px;
+		padding: 1rem;
+	}
+</style>

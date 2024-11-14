@@ -1,61 +1,296 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
 interface Props {
 	title: string;
 	body: string;
-	href: string;
+	hrefUrl?: string;
+	hrefGithub: string;
+	imagePath: string;
+	altText: string;
+	hasTech?: boolean;
+	tech?: string;
+	domain?: string;
+	projStart?: boolean;
+	projStartDate?: string;
 }
 
-const { href, title, body } = Astro.props;
+const {
+	hrefUrl,
+	hrefGithub,
+	title,
+	body,
+	imagePath,
+	altText,
+	tech,
+	hasTech,
+	domain,
+	projStart,
+	projStartDate,
+} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/images/*.{jpg,png,svg}"
+);
+if (!images[imagePath])
+	throw new Error(
+		`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+	);
 ---
 
-<li class="link-card">
-	<a href={href}>
+<li class="card hide">
+	<div class="card-front">
 		<h3>
 			{title}
-			<span>&rarr;</span>
+			<span>&xrArr;</span>
 		</h3>
-		<p>
-			{body}
-		</p>
-	</a>
+		<Image src={images[imagePath]()} alt={altText} />
+	</div>
+	<div class="card-back">
+		<dl>
+			<dt>{title}</dt>
+			<dd>{body}</dd>
+			{
+				hasTech ? (
+					<dd>
+						<span>Technology: </span>
+						{tech}
+					</dd>
+				) : (
+					""
+				)
+			}
+			<dd>
+				<span>Github Repo:</span>
+				<a href={hrefGithub} target="_blank">{hrefGithub}</a>
+			</dd>
+
+			{
+				projStart ? (
+					<dd>
+						<span>Projected Start Date: </span> {projStartDate}
+					</dd>
+				) : (
+					<dd>
+						<>
+							<span>Live Site: </span>
+							<a href={hrefUrl} target="_blank">
+								{domain}
+							</a>
+						</>
+					</dd>
+				)
+			}
+		</dl>
+	</div>
 </li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #ffffff;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+<style lang="scss">
+	// .link-card {
+	// 	list-style: none;
+	// 	display: flex;
+	// 	background-color: #fff;
+	// 	background-image: none;
+	// 	background-size: 400%;
+	// 	border-radius: 7px;
+	// 	background-position: 100%;
+	// 	transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	// 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	// 	border: 10px double var(--color-brand-green);
+	// 	margin-bottom: 1rem;
+
+	// 	&.hide {
+	// 		//display: none;
+	// 	}
+
+	// 	&.animate {
+	// 		animation-duration: 3s;
+	// 		animation-name: fadeIn;
+	// 		animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+	// 		animation-fill-mode: backwards;
+	// 		&:nth-of-type(1) {
+	// 			animation-delay: 1s;
+	// 		}
+	// 		&:nth-of-type(2) {
+	// 			animation-delay: 1.5s;
+	// 		}
+	// 		&:nth-of-type(3) {
+	// 			animation-delay: 2s;
+	// 		}
+	// 		&:nth-of-type(4) {
+	// 			animation-delay: 2.5s;
+	// 		}
+	// 	}
+	// }
+	// .link-card > a {
+	// 	width: 100%;
+	// 	text-decoration: none;
+	// 	line-height: 1.4;
+	// 	padding: calc(1.5rem - 1px);
+	// 	border-radius: 8px;
+	// 	color: var(--color-brand-green);
+	// 	background-color: #ffffff;
+	// 	opacity: 0.8;
+	// 	h3 {
+	// 		font-weight: 600;
+	// 		text-align: center;
+	// 		white-space: nowrap;
+	// 	}
+	// 	p {
+	// 		margin-top: 0.5rem;
+	// 		margin-bottom: 0;
+	// 		display: flex;
+	// 		flex-direction: column;
+	// 		justify-content: center;
+	// 		align-items: center;
+	// 		text-align: center;
+	// 		img {
+	// 			width: 30%;
+	// 			height: auto;
+	// 		}
+	// 	}
+	// }
+
+	// .link-card:is(:hover, :focus-within) {
+	// 	background-position: 0;
+	// 	background-image: var(--gradient-blues);
+	// }
+	// .link-card:is(:hover, :focus-within) h2 {
+	// 	color: rgb(var(--color-sky-blue-light));
+	// }
+
+	// /* Glow In */
+	// .animate.glow {
+	// 	animation-name: animate-glow;
+	// 	animation-timing-function: ease;
+	// }
+
+	// @keyframes animate-glow {
+	// 	0% {
+	// 		opacity: 0;
+	// 		filter: brightness(3) saturate(3);
+	// 		transform: scale(0.8, 0.8);
+	// 	}
+	// 	100% {
+	// 		opacity: 1;
+	// 		filter: brightness(1) saturate(1);
+	// 		transform: scale(1, 1);
+	// 	}
+	// }
+
+	.card {
+		background: white;
+		border: 10px double var(--color-brand-green);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: #23262d;
-		background-color: #ffffff;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
+		color: var(--color-brand-green);
+		padding: 1em;
+		display: flex;
+		flex-direction: column;
+		cursor: pointer;
+		-webkit-transition: transform 0.6s;
+		transform-style: preserve-3d;
+		transition: 0.5s;
+		-webkit-transition: 0.5s;
+		position: relative;
+		transition: transform 0.6s;
+		-webkit-transition: transform 0.6s;
+
+		max-width: 100%;
+
+		@media (min-width: 768px) {
+			max-width: 47%;
+		}
+
+		@media (min-width: 1024px) {
+			max-width: 30%;
+		}
+
+		@media (min-width: 1200px) {
+			max-width: 25%;
+		}
+
+		&.flip {
+			transform: rotateY(180deg);
+			-webkit-transform: rotateY(180deg);
+		}
+
+		.card-front,
+		.card-back {
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.card-front {
+			height: 100%;
+			transform: rotateX(0deg);
+			-webkit-transform: rotateX(0deg);
+
+			h3 {
+				white-space: nowrap;
+			}
+
+			img {
+				border: 1px solid var(--color-brand-green);
+			}
+		}
+
+		.card-back {
+			transform: rotateY(180deg);
+			-webkit-transform: rotateY(180deg);
+			position: absolute;
+			right: 0;
+			left: 0;
+			top: 10px;
+
+			dl {
+				margin-top: -10px;
+
+				dt {
+					background-color: var(--color-brand-green);
+					color: white;
+					padding: 0.5em 0;
+					margin-bottom: 3rem;
+					text-align: center;
+				}
+
+				dd {
+					font-size: 1.5rem;
+					font-weight: 300;
+					margin-bottom: 0.5em;
+					padding: 0 2rem;
+					line-height: 1.2;
+					word-break: break-word;
+
+					&:first-of-type {
+						font-weight: 500;
+					}
+
+					span {
+						font-weight: 500;
+					}
+
+					a,
+					a:link {
+						color: var(--color-brand-green);
+						font-weight: 300;
+					}
+				}
+			}
+		}
 	}
 </style>
+
+<script>
+	const cards: NodeListOf<Element> = document.querySelectorAll(".card");
+
+	const flipCard = (event: Event): void => {
+		const target = event.currentTarget as HTMLElement;
+		target.classList.toggle("flip");
+	};
+
+	cards.forEach((card: Element) => {
+		console.log(card);
+		card.addEventListener("click", flipCard);
+	});
+</script>
