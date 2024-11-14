@@ -9,6 +9,7 @@ interface Props {
 	hrefGithub: string;
 	imagePath: string;
 	altText: string;
+	role: string;
 	hasTech?: boolean;
 	tech?: string;
 	domain?: string;
@@ -23,8 +24,9 @@ const {
 	body,
 	imagePath,
 	altText,
-	tech,
+	role,
 	hasTech,
+	tech,
 	domain,
 	projStart,
 	projStartDate,
@@ -50,20 +52,24 @@ if (!images[imagePath])
 		<dl>
 			<dt>{title}</dt>
 			<dd>{body}</dd>
+			<dd>
+				<span>Role: </span>
+				{role}
+			</dd>
 			{
 				hasTech ? (
 					<dd>
-						<span>Technology: </span>
+						<span>Tech:</span>
 						{tech}
 					</dd>
 				) : (
 					""
 				)
 			}
-			<dd>
+			<!-- <dd>
 				<span>Github Repo:</span>
 				<a href={hrefGithub} target="_blank">{hrefGithub}</a>
-			</dd>
+			</dd> -->
 
 			{
 				projStart ? (
@@ -252,13 +258,18 @@ if (!images[imagePath])
 					padding: 0.5em 0;
 					margin-bottom: 3rem;
 					text-align: center;
+					line-height: 1.2;
+
+					@media (min-width: 768px) {
+						margin-bottom: 1rem;
+					}
 				}
 
 				dd {
-					font-size: 1.5rem;
+					font-size: 1.2rem;
 					font-weight: 300;
 					margin-bottom: 0.5em;
-					padding: 0 2rem;
+					padding: 0 1rem;
 					line-height: 1.2;
 					word-break: break-word;
 
