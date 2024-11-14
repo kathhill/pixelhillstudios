@@ -1,0 +1,402 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Contact from "../components/Contact.astro";
+import { Image } from "astro:assets";
+import logo from "../images/logo.png";
+import hills from "../images/hills.mp4";
+import hillsStatic from "../images/hills-static2.jpg";
+---
+
+<Layout
+	title="Pixel Hill Studios"
+	description="Website Development by Pixel Hill Studios"
+>
+	<main class="p-wrapper">
+		<section class="hero p-group intro-screen" id="intro">
+			<!-- <Image class="bg-mobile" src={hillsStatic} alt="" /> -->
+			<video
+				loop
+				muted
+				playsinline
+				preload="none"
+				autoplay
+				class="video"
+				id="video"
+			>
+				<source src={hills} type="video/mp4" />
+			</video>
+			<div class="overlay"></div>
+			<div class="viewport-header">
+				<Image class="logo" src={logo} alt="Pixel Hill Studios logo" />
+			</div>
+		</section>
+
+		<section class="section p-group" id="about">
+			<div class="p-layer base-layer">
+				<article>
+					<h2>About Pixel Hill Studios</h2>
+					<p>
+						Pixel Hills Studios is the digital showcase of semi-retired web
+						engineer, Kathleen Hill. While some might be satisfied to kick back
+						and relax, she codes, tweaks, and perfects&mdash;because why retire
+						when you can write HTML and JavaScript just for the fun of it?
+					</p>
+					<p>
+						<a class="text-link" href="/about">
+							Read more about Kathleen and Pixel Hill Studios
+						</a>
+					</p>
+				</article>
+			</div>
+			<!-- <div class="p-layer mid-layer"></div> -->
+		</section>
+		<section class="section p-group" id="projects">
+			<div class="p-layer mid-layer">
+				<article class="current">
+					<h2>Current Projects</h2>
+					<ul class="cards link-card-grid hidden">
+						<Card
+							hrefUrl="https://fenixtherapeuticservices.com"
+							hrefGithub="https://github.com/kathhill/fenixtherapeuticservices"
+							title="Fenix Therapeutic Services"
+							body="The online therapy practice of Greg Harmeling, Psy.D."
+							imagePath="/src/images/card-front-fenix.png"
+							altText=""
+							hasTech
+							tech="HTML, SCSS, JavaScript, Astro, Partytown, Google Analytics"
+							domain="fenixtherapeutics.com"
+						/>
+						<Card
+							hrefUrl="https://gratiabenefits.com"
+							hrefGithub="https://github.com/kathhill/gratiabenefits"
+							title="Gratia Insurance Services"
+							body="Health, life, dental, vision, and long term care insurance services."
+							imagePath="/src/images/card-front-gratia.png"
+							altText=""
+							hasTech
+							tech="HTML, SCSS, JavaScript, Astro, Partytown, Google Analytics"
+							domain="gratiabenefits.com"
+						/>
+						<Card
+							hrefUrl="https://fizzlidz.com"
+							hrefGithub="https://github.com/kathhill/fizzlidz"
+							title="Fizz Lidz"
+							body="Keep the flies away from your beverage with these unique cool cups."
+							imagePath="/src/images/card-front-fizzlidz.png"
+							altText=""
+							hasTech
+							tech="Astro, Shopify, Google Analytics"
+							domain="fizzlidz.com"
+						/>
+						<Card
+							hrefUrl="https://paintingsbyjess.com"
+							hrefGithub="https://github.com/kathhill/paintingsbyjess"
+							title="Paintings by Jess"
+							body="Original art, prints, and more by local San Diego artist Jess Hill."
+							imagePath="/src/images/card-front-jess.jpg"
+							altText=""
+							hasTech
+							tech="Astro, JavaScript, Shopify, Facebook Pixel"
+							domain="paintingsbyjess.com"
+						/>
+					</ul>
+				</article>
+				<article class="upcoming">
+					<h2>Upcoming Projects</h2>
+					<ul class="cards link-card-grid hidden">
+						<Card
+							hrefUrl="https://pixelhillpublishing.com"
+							hrefGithub="https://github.com/kathhill"
+							title="Pixel Hill Publishing"
+							body="Taking book publishing to a new level."
+							imagePath="/src/images/card-front-pixel.png"
+							altText=""
+							projStart
+							projStartDate="January 2025"
+						/>
+						<Card
+							hrefUrl="https://fenixtherapeuticservices.com"
+							hrefGithub="https://github.com/kathhill/fenixtherapeuticservices"
+							title="Cyberkey Domain Services"
+							body="OpenSRS domain reseller services"
+							imagePath="/src/images/card-front-cyberkey.png"
+							altText=""
+							hasTech
+							tech="Node.js, OpenSRS API, Astro"
+							projStart
+							projStartDate="February 2025"
+						/>
+						<Card
+							hrefUrl="https://fenixtherapeuticservices.com"
+							hrefGithub="https://github.com/kathhill/fenixtherapeuticservices"
+							title="Channel the Mystic"
+							body="Exploring philosophy and mysticism through different cultures"
+							imagePath="/src/images/card-front-channel.png"
+							altText=""
+							projStart
+							projStartDate="March 2025"
+						/>
+					</ul>
+				</article>
+			</div>
+		</section>
+		<section class="section p-group" id="contact">
+			<div class="p-layer mid-layer">
+				<form action="#" method="post">
+					<fieldset>
+						<legend>Interested in working with me?</legend>
+						<Contact />
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</main>
+</Layout>
+<style lang="scss">
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	main {
+		margin: auto;
+		padding: 0;
+		line-height: 1.6;
+
+		.hero {
+			background-image: url(../images/hills-static2.jpg);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			height: 100vh;
+			width: 100vw;
+			max-height: 696px;
+			// position: relative;
+
+			&.intro-screen {
+				background-color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.bg-mobile {
+				position: absolute;
+				top: 0;
+
+				@media (min-width: 1024px) {
+					display: none;
+				}
+			}
+
+			@media (min-width: 1024px) {
+				background-image: none;
+			}
+
+			.video {
+				display: none;
+				@media (min-width: 1024px) {
+					display: block;
+					object-fit: cover;
+					width: 100vw;
+					height: 100vh;
+					position: fixed;
+					top: 0;
+					left: 0;
+					z-index: 0;
+				}
+			}
+
+			.overlay {
+				display: none;
+				@media (min-width: 1024px) {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: 100vh;
+					background: #5898d9;
+					mix-blend-mode: overlay;
+				}
+			}
+
+			.viewport-header {
+				background-color: #eeeeee80;
+				border: 3px solid var(--color-brand-green);
+				border-radius: 2rem;
+				padding: 1rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: var(--headerOpacity);
+				transform: scale(var(--headerScale));
+				position: absolute;
+				top: 25%;
+				width: 90%;
+
+				@media (min-width: 1024px) {
+					animation: 10s ease-in 0.5s 1 fadeIn;
+					margin: 15% 1rem;
+					width: auto;
+				}
+
+				@media (min-width: 1700px) {
+					margin: 12% 1rem;
+				}
+
+				@media (min-width: 2200px) {
+					margin: 7% 1rem;
+				}
+
+				.logo {
+					width: 100%;
+					max-width: 1488px;
+					height: auto;
+					//animation: 10s ease-in 0.5s 1 fadeIn;
+				}
+			}
+		}
+
+		#about,
+		#projects,
+		#contact {
+			padding: 2rem 1rem 4rem;
+		}
+
+		#about {
+			background: var(--gradient-brand-to-dark);
+			color: var(--color-text-reverse);
+			a {
+				color: var(--color-text-reverse);
+				font-weight: 700;
+			}
+		}
+
+		#projects {
+			background: var(--gradient-brand-to-dark);
+			color: var(--color-text-reverse);
+
+			.cards {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				align-items: center;
+				row-gap: 1rem;
+
+				@media (min-width: 768px) {
+					flex-flow: row wrap;
+					gap: 2rem;
+				}
+			}
+		}
+
+		#contact {
+			background: var(--gradient-greens);
+
+			form {
+				color: var(--color-darkest-green);
+				background: transparent;
+				box-sizing: border-box;
+				// margin: 2rem auto;
+				// padding: 2rem;
+				// width: calc(100% / 3);
+				// max-width: 75%;
+
+				fieldset {
+					border-radius: 6px;
+					font-size: 1.25rem;
+					font-weight: 700;
+					padding: 1rem;
+
+					legend {
+						color: #fff;
+						padding: 0.5rem 1rem;
+					}
+				}
+			}
+		}
+
+		// parallax pieces
+
+		@media (min-width: 1024px) {
+			&.p-wrapper {
+				height: 100vh;
+				overflow-x: hidden;
+				overflow-y: auto;
+				perspective: 10px;
+
+				&::-webkit-scrollbar {
+					// hide the inner scrollbar defined above for parallax
+					display: none;
+				}
+
+				.hero {
+					&.intro-screen {
+						height: 100vh;
+					}
+				}
+
+				.p-group {
+					position: relative;
+					height: 100vh;
+					width: 100vw;
+					transform-style: preserve-3d;
+				}
+
+				.p-layer {
+					color: #fff;
+					position: absolute;
+					inset: 0;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+
+					a {
+						color: #fff;
+					}
+
+					&.base-layer {
+						/* scale calculation: 1 + ((Z transform value * -1) / perspective) */
+						transform: translateZ(-10px) scale(2);
+					}
+
+					&.mid-layer {
+						transform: translate(0);
+					}
+				}
+
+				#intro {
+					z-index: 0;
+				}
+				#about {
+					z-index: -1;
+				}
+				#contact {
+					z-index: -1;
+				}
+
+				.hidden {
+					opacity: 0;
+					transform: translateX(100%);
+				}
+			}
+		}
+	}
+</style>
+<script>
+	const video = document.getElementById("video");
+
+	document.addEventListener("DOMContentLoaded", function addAutoplay() {
+		if (window.innerWidth < 1024) {
+			video?.removeAttribute("autoplay");
+		}
+	});
+</script>

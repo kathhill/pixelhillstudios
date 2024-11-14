@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import kathleen from "../images/profile1.jpg";
+---
+
+<Layout
+	title="About Kathleen Hill | Pixel Hill Studios"
+	description="Read more about Kathleen Hill's web development experience."
+>
+	<main>
+		<section>
+			<h1>About Pixel Hill Studios</h1>
+			<article>
+				<Image class="profile" src={kathleen} alt="Kathleen Hill" />
+				<p>
+					Pixel Hill Studios is the brainchild of Kathleen Hill, an accomplished
+					web engineer with a background in graphic design, marketing, and over
+					20 years experience designing, developing, and maintaining websites.
+					She is a strategic thinker with a working knowledge of the whole user
+					experience, including accessibility concepts, performance metrics, and
+					device agnostic techniques.
+				</p>
+				<h2>Past Work Experience</h2>
+				<ul>
+					<li>
+						<span>WEB ENGINEER</span><br />Best Buy Health Mar 2022 &ndash;
+						Mar2024
+					</li>
+
+					<li>
+						<span>WEB DEVELOPER</span><br />Best Buy Health 2018 &ndash; Mar2022
+					</li>
+
+					<li>
+						<span>WEB DEVELOPER</span><br />GreatCall, Inc. 2013 &ndash; 2018
+					</li>
+
+					<li>
+						<span>WEB DEVELOPER, CONSULTANT</span><br />Velasquez &amp;
+						Associates Jan 2010 &ndash; Nov 2012
+					</li>
+
+					<li>
+						<span>WEB DEVELOPER, CONSULTANT</span><br />Flourish Press Jan 2010
+						&ndash; Mar 2012
+					</li>
+
+					<li>
+						<span>WEB DEVELOPER, DESIGNER, CONSULTANT</span><br />Kathleen Hill
+						Web Design & Marketing 2001 &ndash; 2013
+					</li>
+				</ul>
+			</article>
+		</section>
+	</main>
+</Layout>
+
+<style lang="scss">
+	section {
+		padding: 2rem 0;
+	}
+
+	h1,
+	h2 {
+		text-align: center;
+	}
+
+	article {
+		display: block;
+		padding: 0 1rem;
+
+		img {
+			border: 2px solid var(--color-brand-green);
+			margin: 1rem auto;
+		}
+
+		ul {
+			list-style: none;
+
+			li {
+				font-size: 1.5rem;
+				line-height: 1.2;
+				font-weight: 300;
+				margin-bottom: 1rem;
+
+				@media (min-width: 768px) {
+					text-align: center;
+				}
+			}
+		}
+	}
+</style>
