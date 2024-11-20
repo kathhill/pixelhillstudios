@@ -20,3 +20,6 @@ pnpm-debug.log*
 
 # prettier setting folder
 .pretttierrc
+
+# default astro readme
+README_astro.md
