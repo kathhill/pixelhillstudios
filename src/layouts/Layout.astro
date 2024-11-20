@@ -69,26 +69,26 @@ const year = new Date().getFullYear();
 		--color-alt-green: #77ab3c;
 		--color-alt-green-light: #c7eb9d;
 		--color-text-reverse: #fff;
-		--color-blue-dark: #004f96;
-		--color-sky-blue: #0094fe;
-		--color-sky-blue-light: #36aafc;
-		--gradient-blues: linear-gradient(
-			45deg,
-			var(--color-sky-blue),
-			var(--color-sky-blue-light) 30%,
-			white 60%
-		);
 		--gradient-greens: linear-gradient(
 			var(--color-brand-green),
 			var(--color-alt-green),
 			var(--color-alt-green-light)
 		);
+		--gradient-brand-to-light: linear-gradient(
+			var(--color-brand-green),
+			var(--color-alt-green)
+		);
 		--gradient-brand-to-dark: linear-gradient(
 			var(--color-brand-green),
 			var(--color-darkest-green)
 		);
+		--gradient-dark-to-brand: linear-gradient(
+			var(--color-darkest-green),
+			var(--color-brand-green)
+		);
 		--headerOpacity: 1;
 		--headerScale: 1;
+		--shortHeight: var();
 	}
 
 	header {

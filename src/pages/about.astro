@@ -12,15 +12,28 @@ import kathleen from "../images/profile1.jpg";
 		<section>
 			<h1>About Pixel Hill Studios</h1>
 			<article>
-				<Image class="profile" src={kathleen} alt="Kathleen Hill" />
-				<p>
-					Pixel Hill Studios is the brainchild of Kathleen Hill, an accomplished
-					web engineer with a background in graphic design, marketing, and over
-					20 years experience designing, developing, and maintaining websites.
-					She is a strategic thinker with a working knowledge of the whole user
-					experience, including accessibility concepts, performance metrics, and
-					device agnostic techniques.
-				</p>
+				<div>
+					<Image class="profile" src={kathleen} alt="Kathleen Hill" />
+					<div>
+						<p>
+							Pixel Hill Studios is the creation of Kathleen Hill, an
+							accomplished web engineer with a background in graphic design,
+							marketing, and over 20 years experience designing, developing, and
+							maintaining websites. She is a strategic thinker with a working
+							knowledge of the whole user experience, including accessibility
+							concepts, performance metrics, and device agnostic techniques.
+						</p>
+						<p>
+							On a personal note, Kathleen is a California native living in the
+							San Diego area. She is married with three grown children and a
+							rambunctious dog named Luna.
+						</p>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="cv">
+			<article>
 				<h2>Past Work Experience</h2>
 				<ul>
 					<li>
@@ -52,6 +65,27 @@ import kathleen from "../images/profile1.jpg";
 					</li>
 				</ul>
 			</article>
+			<article>
+				<h2>Education</h2>
+				<ul>
+					<li>
+						<span>2001 - 2005 | University of Phoenix</span><br />BSIT, with
+						honors
+					</li>
+					<li>
+						<span>2000 - 2001 | Art Institute of California</span><br
+						/>Certificate, Web Design
+					</li>
+					<li>
+						<span>1982 - 1983 | La Jolla Academy of Advertising Arts</span><br
+						/>Certificate, Advertising and Communications
+					</li>
+					<li>
+						<span>1978 - 1981 | University of California, San Diego</span><br
+						/>General Coursework
+					</li>
+				</ul>
+			</article>
 		</section>
 	</main>
 </Layout>
@@ -59,35 +93,71 @@ import kathleen from "../images/profile1.jpg";
 <style lang="scss">
 	section {
 		padding: 2rem 0;
-	}
+		margin: 0 auto;
 
-	h1,
-	h2 {
-		text-align: center;
-	}
-
-	article {
-		display: block;
-		padding: 0 1rem;
-
-		img {
-			border: 2px solid var(--color-brand-green);
-			margin: 1rem auto;
+		h1,
+		h2 {
+			text-align: center;
 		}
 
-		ul {
-			list-style: none;
+		&.cv {
+			display: flex;
+			flex-direction: column;
 
-			li {
-				font-size: 1.5rem;
-				line-height: 1.2;
-				font-weight: 300;
-				margin-bottom: 1rem;
+			h2 {
+				text-align: left;
+			}
 
-				@media (min-width: 768px) {
-					text-align: center;
+			@media (min-width: 768px) {
+				flex-direction: row;
+			}
+		}
+
+		article {
+			display: block;
+			padding: 0 1rem;
+			margin: 0 auto;
+
+			h2 {
+				font-size: 1.75rem;
+			}
+
+			img {
+				border: 2px solid var(--color-brand-green);
+				margin: 1rem auto;
+			}
+
+			ul {
+				list-style: none;
+
+				li {
+					font-size: 1.2rem;
+					line-height: 1.2;
+					font-weight: 300;
+					margin-bottom: 1rem;
 				}
 			}
+
+			@media (min-width: 1024px) {
+				> div {
+					margin-top: 2rem;
+
+					div {
+						margin-right: 1rem;
+					}
+
+					img {
+						display: inline;
+						float: right;
+						margin-left: 1rem;
+					}
+				}
+			}
+		}
+
+		@media (min-width: 1024px) {
+			width: 75%;
+			max-width: 1200px;
 		}
 	}
 </style>
