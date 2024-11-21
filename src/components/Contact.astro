@@ -10,7 +10,7 @@
 <input name="email" id="email" placeholder="name@website.com" type="email" />
 
 <label for="message">Message:</label>
-<textarea id="body" placeholder="How may I help you?"></textarea>
+<textarea id="message" placeholder="How may I help you?"></textarea>
 
 <input name="submit" id="submit" type="submit" value="Send" />
 
@@ -36,9 +36,14 @@
 		}
 
 		&:focus {
-			background: #e8e8e8;
+			background: var(--color-alt-green-light);
+			border: var(--color-darkest-green);
 			color: var(--color-darkest-green);
 			font-weight: 700;
+
+			&::placeholder {
+				color: var(--color-alt-green);
+			}
 		}
 	}
 	input {

@@ -5,7 +5,6 @@ import Contact from "../components/Contact.astro";
 import { Image } from "astro:assets";
 import logo from "../images/logo.png";
 import hills from "../images/hills.mp4";
-import hillsStatic from "../images/hills-static2.jpg";
 ---
 
 <Layout
@@ -50,7 +49,7 @@ import hillsStatic from "../images/hills-static2.jpg";
 			</div>
 			<!-- <div class="p-layer mid-layer"></div> -->
 		</section>
-		<section class="p-group" id="current" class="projects">
+		<section class="p-group projects" id="current">
 			<div class="p-layer p-layer-mid">
 				<article class="container">
 					<h2>Current Projects</h2>
@@ -110,7 +109,7 @@ import hillsStatic from "../images/hills-static2.jpg";
 				</article>
 			</div>
 		</section>
-		<section class="p-group" id="upcoming" class="projects">
+		<section class="p-group projects" id="upcoming">
 			<div class="p-layer p-layer-top">
 				<article class="container">
 					<h2>Upcoming Projects</h2>
@@ -214,6 +213,10 @@ import hillsStatic from "../images/hills-static2.jpg";
 
 				@media (min-height: 600px) and (max-height: 820px) {
 					margin-bottom: 0;
+				}
+
+				@media (height: 1024px) {
+					margin-bottom: 17rem;
 				}
 			}
 
@@ -342,6 +345,7 @@ import hillsStatic from "../images/hills-static2.jpg";
 				}
 
 				@media (min-width: 1024px) {
+					max-width: 1024px;
 					padding-left: 2rem;
 					padding-right: 2rem;
 				}
@@ -537,38 +541,49 @@ import hillsStatic from "../images/hills-static2.jpg";
 	});
 </script>
 <script>
-	const current = document.getElementById("#current") as HTMLElement;
-	const upcoming = document.getElementById("upcoming") as HTMLElement;
+	import Card from "../components/Card.astro";
 
-	console.log(`Current: ${current}`);
-	console.log(`Current: ${upcoming}`);
+	const projSections = document.querySelectorAll(".projects");
 
-	const options = {
+	const options: IntersectionObserverInit = {
 		root: null,
-		threshold: 0.3,
+		threshold: 0.0,
 		rootMargin: "-100px",
 	};
 
-	const observerCallback = (
-		entries: IntersectionObserverEntry[],
-		observer: IntersectionObserver
+	const handleIntersection: IntersectionObserverCallback = (
+		entries,
+		observer
 	) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				if (entry.target === current) {
-					console.log("I see current");
-				} else if (entry.target === upcoming) {
-					console.log("I see upcoming");
-				} else {
-					console.log("nothing to see here.");
-					observer.unobserve(entry.target);
-				}
-			}
+		const [entry] = entries;
+
+		if (!entry.isIntersecting) return;
+
+		// Get the id of the target project secion that's in view
+		const xProjectsName = entry.target.getAttribute("id");
+
+		// now target that specific id
+		const xProjects = document.querySelector(`#${xProjectsName}`);
+
+		// find the ul with class cards
+		const cardsList = xProjects?.querySelector("div article ul");
+		const cards = cardsList?.querySelectorAll(".card");
+
+		// remove the hidden class from that ul
+		cardsList?.classList.remove("hidden");
+
+		// remove the hide class and add the animate class to the individual cards
+		cards?.forEach((card, i) => {
+			card.classList.remove("hide");
+			card.classList.add("animate");
 		});
+
+		observer.unobserve(entry.target);
 	};
 
-	const observer = new IntersectionObserver(observerCallback, options);
+	const observer = new IntersectionObserver(handleIntersection, options);
 
-	observer.observe(current);
-	observer.observe(upcoming);
+	projSections.forEach(projSection => {
+		observer.observe(projSection);
+	});
 </script>
