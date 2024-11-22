@@ -5,6 +5,7 @@ import "../styles/global.scss";
 import { Image } from "astro:assets";
 import icon from "../images/icon.png";
 import Navigation from "../components/Navigation.astro";
+import External from "../components/External.astro";
 interface Props {
 	title: string;
 	description: string;
@@ -19,6 +20,7 @@ const year = new Date().getFullYear();
 <!doctype html>
 <html lang="en">
 	<head>
+		<External />
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,8 +48,7 @@ const year = new Date().getFullYear();
 				rights reserved.
 			</p>
 		</footer>
-	</body>
-	<script is:inline data-astro-rerun>
+	</body><script is:inline data-astro-rerun>
 		document.getElementById("footer-year").innerText = new Date().getFullYear();
 
 		const menu = document.getElementById("menu");
