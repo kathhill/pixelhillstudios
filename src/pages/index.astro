@@ -153,12 +153,7 @@ import hills from "../images/hills.mp4";
 		</section>
 		<section class="section p-group" id="contact">
 			<div class="p-layer p-layer-base">
-				<form action="#" method="post">
-					<fieldset>
-						<legend>Interested in working together?</legend>
-						<Contact />
-					</fieldset>
-				</form>
+				<Contact />
 			</div>
 		</section>
 	</main>
@@ -586,3 +581,19 @@ import hills from "../images/hills.mp4";
 		observer.observe(projSection);
 	});
 </script>
+<script type="text/javascript">
+	function configureAhoy() {
+		ahoy.configure({
+			visitsUrl: "https://usebasin.com/ahoy/visits",
+			eventsUrl: "https://usebasin.com/ahoy/events",
+			page: "023020682506" /* Use your form id here */,
+		});
+		ahoy.trackView();
+		ahoy.trackSubmits();
+	}
+</script>
+<script
+	src="https://cdn.jsdelivr.net/npm/ahoy.js@0.3.9/dist/ahoy.min.js"
+	async
+	defer
+	onload="configureAhoy()"></script>

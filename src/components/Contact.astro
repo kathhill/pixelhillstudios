@@ -1,70 +1,317 @@
-<label for="name">Name:</label>
-<input
-	name="name"
-	id="name"
-	type="text"
-	placeholder="First, last, and/or company name"
-/>
+<form
+	action="https://usebasin.com/f/023020682506"
+	method="post"
+	id="contact-form"
+>
+	<fieldset>
+		<legend>Interested in working together?</legend>
 
-<label for="email">Email:</label>
-<input name="email" id="email" placeholder="name@website.com" type="email" />
+		<label for="name">Name:</label>
+		<input
+			name="name"
+			id="name"
+			type="text"
+			placeholder="First, last, and/or company name"
+			required
+			autocomplete="on"
+		/>
 
-<label for="message">Message:</label>
-<textarea id="message" placeholder="How may I help you?"></textarea>
+		<label for="ainm" class="sr-only">Real users skip this field.</label>
+		<input name="ainm" id="ainm" class="sr-only" type="text" tabindex="-1" />
 
-<input name="submit" id="submit" type="submit" value="Send" />
+		<label for="email">Email:</label>
+		<input
+			name="email"
+			id="email"
+			placeholder="name@website.com"
+			type="email"
+			required
+			autocomplete="on"
+		/>
+
+		<label for="message">Message:</label>
+		<textarea id="message" required placeholder="How may I help you?"
+		></textarea>
+
+		<button name="submit" class="btn" id="submit" type="submit" value="Send">
+			<svg
+				id="form-loading"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="icon icon-tabler icons-tabler-outline icon-tabler-loader-2 hidden size-5 animate-spin"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M12 3a9 9 0 1 0 9 9"></path>
+			</svg>
+			Submit
+		</button>
+	</fieldset>
+</form>
+
+<!-- message send success feedback -->
+<dialog id="form-good-feedback" class="success">
+	<div>
+		<p>
+			Message sent successfully. You should receive a reply within 24 hours.
+		</p>
+	</div>
+</dialog>
+
+<!-- message send fail feedback -->
+<dialog id="form-bad-feedback" class="error">
+	<div>
+		<p>
+			Something went wrong. Please try again or
+			<a href="mailto:kath@pixelhillstudios.com"
+				>contact Pixel Hill Studios by email</a
+			>.
+		</p>
+	</div>
+</dialog>
 
 <style lang="scss">
-	label {
-		color: var(--color-text-reverse);
-		display: block;
-		font-weight: 500;
-		padding: 0;
-	}
-	input,
-	textarea {
+	form {
+		color: var(--color-darkest-green);
 		background: transparent;
-		border: 2px solid #fff;
 		border-radius: 6px;
+		box-shadow:
+			0 -2.8px 2.2px rgba(0, 0, 0, 0.034),
+			0 -6.7px 5.3px rgba(0, 0, 0, 0.048),
+			0 -12.5px 10px rgba(0, 0, 0, 0.06),
+			0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+			0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+			0 100px 80px rgba(0, 0, 0, 0.12);
 		box-sizing: border-box;
-		font-size: 1rem;
-		width: 100%;
 
-		&::placeholder {
-			color: #e8e8e8;
-			font-size: 1rem;
+		@media (min-width: 1024px) {
+			margin: 2rem auto;
+			padding: 2rem;
+			width: calc(100% / 1.5);
+			max-width: 75%;
 		}
 
-		&:focus {
-			background: var(--color-alt-green-light);
-			border: var(--color-darkest-green);
-			color: var(--color-darkest-green);
-			font-weight: 700;
+		@media (min-width: 1400px) {
+			max-width: 1200px;
+		}
 
-			&::placeholder {
-				color: var(--color-alt-green);
+		fieldset {
+			border-color: var(--color-text-reverse);
+			border-radius: 6px;
+			font-size: 1.25rem;
+			font-weight: 500;
+			padding: 1rem;
+
+			legend {
+				color: #fff;
+				padding: 0.5rem 1rem;
 			}
 		}
-	}
-	input {
-		padding: 20px;
-		margin-bottom: 1rem;
 
-		&[type="submit"] {
+		label {
+			color: var(--color-text-reverse);
+			display: block;
+			font-weight: 500;
+			padding: 0;
+		}
+		input,
+		textarea {
+			background: transparent;
+			border: 2px solid #fff;
+			border-radius: 6px;
+			box-sizing: border-box;
+			font-size: 1rem;
+			width: 100%;
+
+			&::placeholder {
+				color: #e8e8e8;
+				font-size: 1rem;
+			}
+
+			&:focus {
+				background: var(--color-alt-green-light);
+				border: var(--color-darkest-green);
+				color: var(--color-darkest-green);
+				font-weight: 700;
+
+				&::placeholder {
+					color: var(--color-alt-green);
+				}
+			}
+		}
+		input {
+			padding: 20px;
+			margin-bottom: 1rem;
+		}
+		textarea {
+			height: 150px;
+			padding: 1rem;
+		}
+		.sr-only {
+			width: 1rem;
+		}
+		.btn {
 			background: #025306;
 			border: none;
+			border-radius: 5px;
 			color: #fff;
 			cursor: pointer;
+			display: flex;
 			font-size: 1.5rem;
-			margin: 2rem auto;
+			gap: 0.5rem;
+			justify-content: center;
+			align-items: center;
+			margin: 2rem 0;
+			padding: 0.5rem;
 
 			@media (min-width: 1024px) {
 				width: 10rem;
 			}
 		}
 	}
-	textarea {
-		height: 150px;
-		padding: 1rem;
+
+	dialog {
+		&.success,
+		&.error {
+			border-radius: 0.5rem;
+			bottom: 50%;
+			display: flex;
+			font-weight: 500;
+			justify-content: center;
+			align-items: center;
+			margin-left: auto;
+			margin-right: auto;
+			opacity: 0;
+			position: fixed;
+			padding: 0;
+			transition-duration: 0.5s;
+			visibility: hidden;
+			z-index: 10;
+			width: 500px;
+			height: 175px;
+			> div {
+				text-align: center;
+				padding: 1rem;
+
+				p {
+					line-height: 1.5;
+
+					@media (min-width: 1024px) {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+		&.success {
+			background-color: var(--color-text-reverse);
+			color: var(--color-brand-green);
+			a {
+				color: var(--color-brand-green);
+			}
+		}
+		&.error {
+			background-color: var(--color-text-reverse);
+			color: rgb(153 27 27);
+			a {
+				color: rgb(153 27 27);
+			}
+		}
+	}
+	.animate-spin {
+		animation: spin 1s linear infinite;
+	}
+	.size-5 {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+	.hidden {
+		display: none;
+	}
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 </style>
+
+<script>
+	// handle the form submission
+	let xhr = new XMLHttpRequest();
+
+	// only one contact form supported per page
+	const form = document.getElementById("contact-form") as HTMLFormElement;
+	const formLoadingIndicator = document.getElementById("form-loading");
+	const formGoodFeedback = document.getElementById("form-good-feedback");
+	const formBadFeedback = document.getElementById("form-bad-feedback");
+
+	const handleFormSubmission = (event: Event) => {
+		// prevent page from reloading
+		event.preventDefault();
+
+		// show loading indicator
+		formLoadingIndicator?.classList.remove("hidden");
+
+		// get form data
+		const formData = new FormData(form);
+
+		// create POST request to the form action attribute
+		xhr.open("POST", form.action, true);
+
+		// make sure we receive json back
+		xhr.setRequestHeader("Accept", "application/json");
+
+		// SEND IT!
+		xhr.send(formData);
+
+		// once we get a response...
+		xhr.onload = function () {
+			formLoadingIndicator?.classList.add("hidden");
+			const response = JSON.parse(xhr.response);
+
+			if (xhr.status === 200) {
+				// The request was successful
+				console.log("Form submitted successfully.");
+				// reset form on successful email send
+				form?.reset();
+				if (formGoodFeedback) {
+					formGoodFeedback.style.visibility = "visible";
+					formGoodFeedback.style.opacity = "1";
+
+					// reset form feedback after a few seconds
+					setTimeout(() => {
+						formGoodFeedback.style.opacity = "0";
+
+						setTimeout(() => {
+							formGoodFeedback.style.visibility = "hidden";
+						}, 300);
+					}, 5000);
+				}
+			} else {
+				const message = "Form submission failed with error: " + response.error;
+				console.log(message);
+				// The request failed
+				if (formBadFeedback) {
+					formBadFeedback.style.visibility = "visible";
+					formBadFeedback.style.opacity = "1";
+
+					// reset form feedback after a few seconds
+					setTimeout(() => {
+						formBadFeedback.style.opacity = "0";
+
+						setTimeout(() => {
+							formBadFeedback.style.visibility = "hidden";
+						}, 300);
+					}, 7000);
+				}
+			}
+		};
+	};
+	form?.addEventListener("submit", handleFormSubmission, true);
+</script>
