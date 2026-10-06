@@ -30,9 +30,9 @@ const year = new Date().getFullYear();
 		<title>{title}</title>
 	</head>
 	<body>
-		<a class="sr-only focus:not-sr-only skip-link" href="#about"
-			>Skip to main content</a
-		>
+		<a class="sr-only focus:not-sr-only skip-link" href="#about">
+			Skip to main content
+		</a>
 		<header>
 			<a href="/" rel="home">
 				<Image class="icon" src={icon} alt="Pixel Hill" />
@@ -100,16 +100,17 @@ const year = new Date().getFullYear();
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem;
-		position: fixed;
+		padding: 0.25rem;
+		position: relative;
 		width: 100%;
 		z-index: 10;
 
 		.icon {
 			border: 2px solid #fff;
-			height: 4rem;
-			padding: 0.5rem;
-			width: 4rem;
+			border-radius: 0.25rem;
+			height: 3rem;
+			margin-left: 1rem;
+			width: 3rem;
 		}
 	}
 </style>

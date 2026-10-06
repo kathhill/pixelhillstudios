@@ -152,20 +152,19 @@ dt {
 }
 
 footer {
-	background: $color-brand-green;
-	//box-shadow: 0px -10px 10px 0px rgba(0,0,0,0.75);
+	background: $color-darkest-green;
 	color: $color-text-reverse;
 	margin-top: auto;
 	padding: 1rem;
-	// position: fixed;
-	bottom: 0;
 	width: 100%
 }
 
 footer p {
 	display: flex;
 	flex-wrap: wrap;
+	font-size: 1rem;
 	justify-content: center;
+	align-items: center;
 }
 
 footer a {

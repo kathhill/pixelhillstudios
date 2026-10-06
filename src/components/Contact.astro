@@ -34,7 +34,9 @@
 			id="message"
 			name="message"
 			required
-			placeholder="How may I help you?"></textarea>
+			placeholder="How may I help you?"
+		>
+		</textarea>
 
 		<button name="submit" class="btn" id="submit" type="submit" value="Send">
 			<svg
@@ -70,9 +72,9 @@
 	<div>
 		<p>
 			Something went wrong. Please try again or
-			<a href="mailto:kath@pixelhillstudios.com"
-				>contact Pixel Hill Studios by email</a
-			>.
+			<a href="mailto:kath@pixelhillstudios.com">
+				contact Pixel Hill Studios by email
+			</a>.
 		</p>
 	</div>
 </dialog>
@@ -158,9 +160,10 @@
 			width: 1rem;
 		}
 		.btn {
-			background: #025306;
+			background: var(--color-alt-green);
 			border: none;
 			border-radius: 5px;
+			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 			color: #fff;
 			cursor: pointer;
 			display: flex;
