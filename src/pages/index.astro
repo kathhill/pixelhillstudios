@@ -48,8 +48,34 @@ import hills from "../images/hills.mp4";
 		</section>
 		<section class="projects" id="current">
 			<article class="container">
-				<h2>Recent Projects</h2>
+				<h2>Current Projects</h2>
 				<ul class="cards hidden">
+					<Card
+						hrefUrl="https://pathfinderarts.org"
+						hrefGithub="https://github.com/kathhill/pathfinederarts"
+						title="Pathfinder Arts Collective"
+						body="A non-profit consultancy for arts organizations"
+						imagePath="/src/images/card-front-pathfinder.png"
+						altText=""
+						role="Site design, development, ongoing maintenance"
+						hasTech
+						tech="Astro, Tailwind CSS, Typescript, Google Analytics"
+						comingSoon
+						domain="pathfinderarts.com"
+					/>
+					<Card
+						hrefUrl="https://sdcydn.org"
+						hrefGithub="https://github.com/kathhill/sdcydn"
+						title="SDCYDN"
+						body="San Diego Creative Youth Development Network"
+						imagePath="/src/images/card-front-sdcydn.png"
+						altText=""
+						role="Redesign includes migration to Astro from WordPress, adds SSL and other security enhancements"
+						hasTech
+						tech="Astro, Tailwind CSS, Typescript, Google Analytics"
+						comingSoon
+						domain="sdcydn.org"
+					/>
 					<Card
 						hrefUrl="https://fenixtherapeuticservices.com"
 						hrefGithub="https://github.com/kathhill/fenixtherapeuticservices"
@@ -66,7 +92,7 @@ import hills from "../images/hills.mp4";
 						hrefUrl="https://pixelhillpublishing.com"
 						hrefGithub="https://github.com/kathhill"
 						title="Pixel Hill Publishing"
-						body="Taking book publishing to a new level."
+						body="Publisher of medium content books, such as puzzles and coloring books."
 						imagePath="/src/images/card-front-pixel-hill-publishing.png"
 						altText=""
 						role="Branding, design, development"
@@ -336,22 +362,10 @@ import hills from "../images/hills.mp4";
 			color: var(--color-text-reverse);
 
 			article {
-				margin-bottom: 2rem;
-				@media (min-width: 1024px) {
-					@media (min-height: 600px) and (max-height: 820px) {
-						background: var(--gradient-brand-to-dark);
-						padding-top: 4rem;
-					}
-				}
-
 				@media (min-width: 1024px) {
 					max-width: 1024px;
 					padding-left: 2rem;
 					padding-right: 2rem;
-				}
-
-				@media (min-width: 1350px) {
-					margin-top: 4rem;
 				}
 
 				@media (min-width: 1400px) {
@@ -386,9 +400,9 @@ import hills from "../images/hills.mp4";
 
 		#current {
 			@media (min-width: 1024px) {
-				@media (min-height: 600px) and (max-height: 820px) {
-					margin-bottom: 6rem;
-				}
+				// @media (min-height: 600px) and (max-height: 820px) {
+				// 	margin-bottom: 6rem;
+				// }
 			}
 		}
 

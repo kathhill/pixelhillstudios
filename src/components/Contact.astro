@@ -126,7 +126,7 @@
 		input,
 		textarea {
 			background: transparent;
-			border: 2px solid #fff;
+			border: 2px solid var(--color-white);
 			border-radius: 6px;
 			box-sizing: border-box;
 			font-size: 1rem;
@@ -138,7 +138,7 @@
 			}
 
 			&:focus {
-				background: var(--color-alt-green-light);
+				background: var(--color-white);
 				border: var(--color-darkest-green);
 				color: var(--color-darkest-green);
 				font-weight: 700;
@@ -160,11 +160,11 @@
 			width: 1rem;
 		}
 		.btn {
-			background: var(--color-alt-green);
+			background: var(--color-white);
 			border: none;
 			border-radius: 5px;
 			box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-			color: #fff;
+			color: var(--color-text);
 			cursor: pointer;
 			display: flex;
 			font-size: 1.5rem;
@@ -213,17 +213,18 @@
 			}
 		}
 		&.success {
-			background-color: var(--color-text-reverse);
+			background-color: var(--color-white);
 			color: var(--color-brand-green);
 			a {
 				color: var(--color-brand-green);
 			}
 		}
 		&.error {
-			background-color: var(--color-text-reverse);
-			color: rgb(153 27 27);
+			--error-color: rgb(153 27 27);
+			background-color: var(--color-white);
+			color: var(--error-color);
 			a {
-				color: rgb(153 27 27);
+				color: var(--error-color);
 			}
 		}
 	}

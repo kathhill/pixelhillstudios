@@ -1,9 +1,35 @@
 @charset "UTF-8";
 
-@import './variables.scss';
+:root {
+	/* colors */
+	/* greens */
+	--color-brand-green: #025306;
+	--color-darkest-green: #172d16;
+	--color-alt-green: #77ab3c;
+	--color-alt-green-light: #c7eb9d;
+	--color-blue-dark: #004F96;
+	--color-sky-blue: #0094fe ;   
+	--color-sky-blue-light: #36aafc;
+	--color-orangish: #ab733c;
+	--color-light-orangish: #ffd6ad;
+	--color-white: #fff;
+	/* default text color */
+	--color-text: --color-darkest-green;
+
+	/* reverse text color */
+	--color-text-reverse: #fff;
+
+	/* spacing */
+	--spacing-0: 0;
+	--spacing-4: 1rem;
+	--spacing-6: 1.5rem;
+	--spacing-8: 2rem;
+	--spacing-12: 3rem;
+	--spacing-32: 8rem;
+}
 
 html {
-		color: $color-text;
+		color: var(--color-text);
 		font-family: "Jost Variable", sans-serif;
 		// font-size: 18px;
 		font-size: calc(15px + 0.390625vw);
@@ -64,7 +90,7 @@ p {
 }
 
 a {
-	color: $color-text-reverse;
+	color: var(--color-text-reverse);
 	text-decoration: none;
 	font-weight: 700;
 
@@ -125,7 +151,7 @@ dt {
 }
 
 .skip-link {
-	color: $color-text-reverse;
+	color: var(--color-text-reverse);
 	font-weight: bold;
 }
 
@@ -152,8 +178,8 @@ dt {
 }
 
 footer {
-	background: $color-darkest-green;
-	color: $color-text-reverse;
+	background: var(--color-darkest-green);
+	color: var(--color-text-reverse);
 	margin-top: auto;
 	padding: 1rem;
 	width: 100%
@@ -168,6 +194,6 @@ footer p {
 }
 
 footer a {
-	color: $color-text-reverse;
+	color: var(--color-text-reverse);
 	display: block;
 }
