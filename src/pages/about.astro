@@ -13,7 +13,6 @@ import kathleen from "../images/profile1.jpg";
 			<h1>About Pixel Hill Studios</h1>
 			<article>
 				<div>
-					<Image class="profile" src={kathleen} alt="Kathleen Hill" />
 					<div>
 						<p>
 							Pixel Hill Studios is the online portfolio of Kathleen Hill, an
@@ -29,6 +28,7 @@ import kathleen from "../images/profile1.jpg";
 							rambunctious dog named Luna.
 						</p>
 					</div>
+					<Image class="profile" src={kathleen} alt="Kathleen Hill" />
 				</div>
 			</article>
 		</section>
@@ -142,14 +142,13 @@ import kathleen from "../images/profile1.jpg";
 			@media (min-width: 1024px) {
 				> div {
 					margin-top: 2rem;
+					display: flex;
 
 					div {
 						margin-right: 1rem;
 					}
 
 					img {
-						display: inline;
-						float: right;
 						margin-left: 1rem;
 					}
 				}
