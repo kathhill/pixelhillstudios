@@ -173,6 +173,10 @@ dt {
 	width: auto
 }
 
+.hidden {
+	display: none;
+}
+
 footer {
 	background: var(--color-darkest-green);
 	color: var(--color-text-reverse);

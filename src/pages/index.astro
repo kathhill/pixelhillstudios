@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Contact from "../components/Contact.astro";
+import VideoToggleButton from "../components/VideoToggleButton.astro";
 import { Image } from "astro:assets";
 import logo from "../images/logo.png";
 import hills from "../images/hills.mp4";
@@ -21,6 +22,8 @@ import hills from "../images/hills.mp4";
 				autoplay
 				class="video"
 				id="video"
+				aria-hidden="true"
+				poster="/src/images/hills-poster2.jpg"
 			>
 				<source src={hills} type="video/mp4" />
 			</video>
@@ -28,6 +31,7 @@ import hills from "../images/hills.mp4";
 			<div class="viewport-header">
 				<Image class="logo" src={logo} alt="Pixel Hill Studios logo" />
 			</div>
+			<VideoToggleButton />
 		</section>
 
 		<section class="section" id="about">
@@ -210,6 +214,7 @@ import hills from "../images/hills.mp4";
 			&.intro-screen {
 				background-color: white;
 				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 			}
@@ -509,15 +514,6 @@ import hills from "../images/hills.mp4";
 		}
 	}
 </style>
-<script>
-	const video = document.getElementById("video");
-
-	document.addEventListener("DOMContentLoaded", function addAutoplay() {
-		if (window.innerWidth < 1024) {
-			video?.removeAttribute("autoplay");
-		}
-	});
-</script>
 <script>
 	const projSections = document.querySelectorAll(".projects");
 

@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import pauseIcon from "../images/pause-white.svg";
+import playIcon from "../images/play-white.svg";
+---
+
+<!-- Accessibility toggle button for the background video. This component is only visible on desktop screens (1024px and above). It allows users to pause and play the background video, enhancing user experience and accessibility.	 -->
+<button
+	id="video-toggle"
+	aria-label="Pause background video"
+	aria-pressed="false"
+	class="video-toggle"
+>
+	<Image id="video-pause-icon" src={pauseIcon} alt="Pause video" />
+	<Image id="video-play-icon" src={playIcon} alt="Play video" class="hidden" />
+</button>
+
+<style lang="scss">
+	.video-toggle {
+		display: none;
+		@media (min-width: 1024px) {
+			display: block;
+			align-self: flex-end;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			top: 37%;
+			right: 3%;
+		}
+
+		img {
+			height: 50px;
+			width: 50px;
+		}
+	}
+</style>
+
+<script>
+	const video = document.getElementById("video") as HTMLVideoElement;
+	const toggleBtn = document.getElementById("video-toggle");
+	const pause = document.getElementById("video-pause-icon");
+	const play = document.getElementById("video-play-icon");
+
+	document.addEventListener("DOMContentLoaded", function addAutoplay() {
+		if (window.innerWidth < 1024) {
+			video?.removeAttribute("autoplay");
+		}
+	});
+
+	toggleBtn?.addEventListener("click", () => {
+		if (video.paused) {
+			video?.play();
+			toggleBtn?.setAttribute("aria-pressed", "true");
+			toggleBtn?.setAttribute("aria-label", "Play background video");
+			pause?.classList.remove("hidden");
+			play?.classList.add("hidden");
+		} else {
+			video?.pause();
+			toggleBtn?.setAttribute("aria-pressed", "false");
+			toggleBtn?.setAttribute("aria-label", "Pause background video");
+			pause?.classList.add("hidden");
+			play?.classList.remove("hidden");
+		}
+	});
+</script>
